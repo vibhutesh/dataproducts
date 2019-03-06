@@ -27,16 +27,17 @@ It must contained some embedded R code that gets run when slidifying the documen
 
 ## The Principle
 
-Number of columns x (40 + Number of rows x bytes coeffiecient)
-
+Forest Area Cover
 ```{r echo=FALSE}
-library(pryr)
-## Example df with 3 numeric variables and bytes coef of 8
-df <- data.frame(x = rnorm(1e6), y = rnorm(1e6), z = rnorm(1e6))
-## Calculator memory size
-ncol(df)*(40 + nrow(df)*8)
-## actual memory size
-object_size(df)
+urlfile<-'https://raw.github.com/vibhutesh/dataproducts/master/forestarea.csv'
+
+area <- read.csv(url(urlfile))
+
+     # Render a barplot 
+     barplot(area[,1],  
+             main=area$Lakdweep, 
+             ylab="Forest Area Cover (Sq-Meter)", 
+             xlab="Year") 
 ```
 
 ## The Source
